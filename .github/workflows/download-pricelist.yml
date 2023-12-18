@@ -18,6 +18,14 @@ jobs:
       - name: 'Get Azure Prices and commit'
         shell: pwsh
         run: |
+          Write-Output "Install Git LFS"
+          git lfs install
+          git lfs track "*.json"
+          git lfs track "*.csv"
+          git add .gitattributes
+          git add -A
+          git commit -m "Added gitattributes for large files"
+          git push
           Write-Output "Downloading MCA Prices..."
           $count = 0
           $url = "https://prices.azure.com/api/retail/prices?api-version=2021-10-01-preview&currencyCode='EUR'"
