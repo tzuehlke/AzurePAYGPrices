@@ -46,7 +46,14 @@ jobs:
           $filename = "mca-$((Get-Date).ToString("yyyy-MM-dd_HH-mm-ss"))"
           $prices | ConvertTo-Json | Out-File "$filename.json"
           $prices | Export-Csv -Path "$filename.csv" -Delimiter ';' -NoTypeInformation -Encoding UTF8
+          ls
           $end = Get-Date
           Write-Output "started $start"
           Write-Output "end $end"
-        
+      
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: 'add json and csv files'
+          committer_name: Price List Download Workflow
+          add: '*.* --force'
+          push: true
