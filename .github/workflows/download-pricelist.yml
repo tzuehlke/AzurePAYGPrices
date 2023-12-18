@@ -19,6 +19,8 @@ jobs:
         shell: pwsh
         run: |
           Write-Output "Install Git LFS"
+          git config --global user.name 'Workflow'
+          git config --global user.email 'tzuehlke@users.noreply.github.com'
           git lfs install
           git lfs track "*.json"
           git lfs track "*.csv"
@@ -56,24 +58,11 @@ jobs:
           $filename = "mca-$((Get-Date).ToString("yyyy-MM-dd_HH-mm-ss"))"
           $prices | ConvertTo-Json | Out-File "$filename.json"
           $prices | Export-Csv -Path "$filename.csv" -Delimiter ';' -NoTypeInformation -Encoding UTF8
-          ls
+          #ls
           $end = Get-Date
           Write-Output "started $start"
           Write-Output "end $end"
-          git config --global user.name 'Workflow'
-          git config --global user.email 'tzuehlke@users.noreply.github.com'
           git status -s
           git add -A
-          git status -s
           git commit -m "Added price lists by workflow"
-          git status -s
           git push
-          git status -s
-      
-      #- uses: EndBug/add-and-commit@v9
-        #name: Add and Commit files
-      #  with:
-      #    message: 'add json and csv files'
-      #    committer_name: Price List Download Workflow
-      #    add: '*.* --force'
-      #    push: true
