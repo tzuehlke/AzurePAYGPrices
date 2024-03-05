@@ -33,8 +33,8 @@ jobs:
                   -Method Get `
                   -ContentType "application/json; charset=utf-8" `
                   -ResponseHeadersVariable respHeaders `
-                  -SkipHttpErrorCheck
-                  -StatusCodeVariable "respStatusCode"
+                  -SkipHttpErrorCheck `
+                  -StatusCodeVariable "respStatusCode" `
                   -Uri $url
               if($respStatusCode -eq "429"){
                 Write-Output "waiting for 61 seconds because of 429 response"
