@@ -33,7 +33,14 @@ jobs:
                   -Method Get `
                   -ContentType "application/json; charset=utf-8" `
                   -ResponseHeadersVariable respHeaders `
+                  -SkipHttpErrorCheck
+                  -StatusCodeVariable "respStatusCode"
                   -Uri $url
+              if($respStatusCode -eq "429"){
+                Write-Output "waiting for 61 seconds because of 429 response"
+                Start-Sleep -Seconds (61)
+                continue
+              }
               $currentDate = Get-Date
               $resp.Items | % {
                   Add-Member -InputObject $_ -NotePropertyName "retrievalDate" -NotePropertyValue $currentDate
