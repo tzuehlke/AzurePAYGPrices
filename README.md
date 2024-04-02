@@ -1,2 +1,2 @@
-# Intro
-This repository contains the workflow [download-pricelist.yml](/.github/workflows/download-pricelist.yml) that downloads the current Pay-As-You-Go prices from Azure once a month and saves them in ~40MB files. This repository is intended to enable price comparison with previous Azure prices.
+# Info
+This repository contains the workflow [download-pricelist.yml](/.github/workflows/download-pricelist.yml) that downloads the current Pay-As-You-Go prices from Azure once a month and saves them in ~40MB files. This repository is intended to enable price comparison with previous Azure prices. A detailed description can be found on [this blogpost](https://blog.zuehlke.cloud/2024/03/azure-pay-as-you-go-prices-repository/).
